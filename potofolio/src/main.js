@@ -33,3 +33,37 @@ document.addEventListener("scroll", ()=>{
 });
 
 
+const hamburgur = document.querySelector(".header__toggle");
+const headerMenu = document.querySelector(".header__menu");
+
+hamburgur.addEventListener("click", () => {
+    headerMenu.classList.toggle("active");
+});
+headerMenu.addEventListener("click", () =>{
+    headerMenu.classList.remove("active");
+});
+
+const categories = document.querySelector(".categories");
+const project = document.querySelectorAll(".project");
+console.log(project);
+
+categories.addEventListener("click",(e) => {
+    console.log(e.target.dataset.category);
+    const filter = e.target.dataset.category;
+
+    project.forEach((v) => {
+        if(filter == "all" || filter ==v.dataset.type){
+            v.style.display = "block";
+
+        }else{
+            v.style.display = "none";
+        }
+    });
+
+    const selected = document.querySelector(".category--selected");
+    e.target.classList.remove("category--selected");
+    e.target.classList.add("category--selected");
+});
+
+
+
